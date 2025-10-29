@@ -1,42 +1,60 @@
-export default function Eventos(){ return(
-    <nav>
-        <main class="container py-5">
-    <header class="mb-4">
-      <h1 class="section-title title-glow mb-2">Eventos gamers en Chile</h1>
-      <p>Explora próximos torneos, lanzamientos y meetups. Haz clic en “Ver detalles” para más info.</p>
-    </header>
+import { useState } from "react";
+import torneoLolImg from "../assets/img/eventos/lol.jpg";
+import smashImg from "../assets/img/eventos/smash.jpg";
+import lanzamientoImg from "../assets/img/eventos/dragonballsparkin.png";
 
-    <section>
-      <div id="eventsGrid" class="row g-4">
-      </div>
-    </section>
-  </main>
-
-  <div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-      <div class="modal-content bg-black text-white border border-neon rounded-4">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle"></h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <img id="modalImage" class="w-100 rounded-3 mb-3" alt=""></img>
-          <p id="modalDesc"></p>
-          <ul class="list-unstyled small">
-            <li><i class="bi bi-calendar-event"></i> <span id="modalFecha"></span></li>
-            <li><i class="bi bi-geo-alt"></i> <span id="modalLugar"></span></li>
-            <li><i class="bi bi-ticket-perforated"></i> <span id="modalEntrada"></span></li>
-          </ul>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+export default function Eventos() { 
   
-    </nav>
+  const [eventos] = useState([
+    {
+      id: 1,
+      titulo: "Torneo League of Legends - SoloQ 1v1",
+      fecha: "30 Octubre 2025",
+      lugar: "Sede Duoc UC Maipú",
+      banner: torneoLolImg,
+      desc: "Demuestra tu mecánica individual en duelos 1v1. Premios en periféricos RGB."
+    },
+    {
+      id: 2,
+      titulo: "Smash Bros Ultimate - Community Night",
+      fecha: "2 Noviembre 2025",
+      lugar: "LEVEL-UP Store (Local 12, Mall Arauco)",
+      banner: smashImg,
+      desc: "Bracket doble eliminación, pantalla gigante y narrador en vivo."
+    },
+    {
+      id: 3,
+      titulo: "Lanzamiento Dragon Ball: Sparking Zero",
+      fecha: "5 Noviembre 2025",
+      lugar: "Streaming Twitch oficial",
+      banner: lanzamientoImg,
+      desc: "Early access, sorteos de steelbook, y juego libre en consolas PS5."
+    }
+  ]);
+
+  return (
+    <main className="container py-4">
+      <h1 className="section-title mb-4">Eventos</h1>
+
+      <div className="row g-4">
+        {eventos.map(ev => (
+          <div key={ev.id} className="col-12 col-md-6 col-lg-4">
+            <div className="p-3 bg-dark text-light rounded-4 h-100 d-flex flex-column">
+              <img
+                src={ev.banner}
+                alt={ev.titulo}
+                className="img-fluid rounded-3 mb-3"
+              />
+              <h2 className="h5">{ev.titulo}</h2>
+              <p className="small mb-1"><strong>Fecha:</strong> {ev.fecha}</p>
+              <p className="small mb-1"><strong>Lugar:</strong> {ev.lugar}</p>
+              <p className="small flex-grow-1">{ev.desc}</p>
+              <button className="btn btn-outline-light btn-sm w-100 mt-2">
+                Me interesa
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
 )}
