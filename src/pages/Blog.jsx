@@ -7,183 +7,40 @@ import fortnite from '../assets/img/fornite.jpg'
 import duocuc from '../assets/img/duocucpromo.png'
 import pokemon from '../assets/img/pokemoncard.jpeg'
 import teclado from '../assets/img/teclado.jpg'
+import { Link } from "react-router-dom";
 
-export default function Blog(){ return (
-    <nav>
-        <main class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="section-title m-0">Blog & Noticias</h1>
-      <a class="btn btn-outline-neon btn-sm" href="blog.html">Ver más</a>
-    </div>
 
-    <div class="row g-3">
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={nintendodirect} alt="Nintendo Direct"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">Noticias</span>
-              <span class="badge badge-tag">Nintendo</span>
+export default function Blog() { 
+  
+  const posts = [
+    { id: 1, title: "Nintendo Direct 2025: horarios y qué esperar", img: nintendodirect },
+    { id: 2, title: "Con todo el nuevo contenido de Hollow Knight: Silksong", img: hollow },
+    { id: 3, title: "Nuevas jugabilidades en FC 26", img: fc26 },
+    { id: 4, title: "Chile está a un paso de habilitar la conexión móvil satelital: así funcionará la alianza de Entel y Starlink", img: entel },
+    { id: 5, title: "Lenovo ataca el sector Gaming en IFA 2025 con el lanzamiento de Legion Go 2, un PC Gamer portátil con controladores desacoplables", img: lenovo },
+    { id: 6, title: "Pasa de nivel en Fortnite más rápido con estos mapas secretos", img: fortnite },
+    { id: 7, title: "APROVECHA EL DESCUENTO SOLO POR SER ALUMNO DUOC", img: duocuc },
+    { id: 8, title: "Tips para elegir tu primer mazo pokemon", img: pokemon },
+    { id: 9, title: "Cómo elegir tu primer teclado mecánico", img: teclado },
+  ];
+  
+  return (
+
+    <main className="container py-4">
+      <h1 className="section-title mb-4">Blog</h1>
+
+      <div className="row g-4">
+        {posts.map(p => (
+          <div key={p.id} className="col-12 col-md-6">
+            <div className="p-3 bg-dark text-light rounded-4 h-100">
+              <img src={p.img} alt={p.title} className="img-fluid rounded-3 mb-2" />
+              <h2 className="h5">{p.title}</h2>
+              <Link className="btn btn-outline-light btn-sm mt-2" to={`/blog/${p.id}`}>
+                Leer más
+              </Link>
             </div>
-            <h5 class="card-title">Nintendo Direct: horarios y qué esperar</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 5 min • 18 oct 2025</p>
-            <p class="card-text">Parece que tenemos una nueva pista del siguiente Nintendo Direct. Los rumores de Direct en junio se desinflaron, pero luego tuvimos un Donkey Kong Bananza Direct. El caso es que hace poco se reavivaron para julio de 2025 con posibles juegos de un Direct general.</p>
-            <a class="stretched-link" href="blog-post.html?id=1"></a>
           </div>
-        </article>
+        ))}
       </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={hollow} alt="Hollow Knight"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">Análisis</span>
-              <span class="badge badge-tag">PlayStation</span>
-            </div>
-            <h5 class="card-title">Con todo el nuevo contenido de Hollow Knight: Silksong</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 8 min • 01 sep 2025</p>
-            <p class="card-text">¡Parece que ha causado bastantes reacciones el debut de Hollow Knight: Silksong! Recordad que hace poco también recibimos gameplay del juego corriendo en Switch 2, y luego supimos que el anuncio especial era que el juego iba a lanzar el 4 de septiembre de 2025 en todas las plataformas, incluyendo Switch y Switch 2.</p>
-            <a class="stretched-link" href="blog-post.html?id=2"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={fc26} alt="Guía FPS PC"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">Guías</span>
-              <span class="badge badge-tag">PC</span>
-            </div>
-            <h5 class="card-title">Nuevas jugabilidades en FC 26</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 7 min • 25 ago 2025</p>
-            <p class="card-text">¡Parece que ha causado bastantes reacciones el debut de FC 26! Recordad que hace poco también recibimos gameplay del juego corriendo en Switch 2, y luego supimos que el anuncio especial era que el juego iba a lanzar el 4 de septiembre de 2025 en todas las plataformas, incluyendo Switch y Switch 2.</p>
-            <a class="stretched-link" href="blog-post.html?id=3"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={entel} alt="Xbox Showcase"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">Noticias</span>
-              <span class="badge badge-tag">entel</span>
-            </div>
-            <h5 class="card-title">Chile está a un paso de habilitar la conexión móvil satelital: así funcionará la alianza de Entel y Starlink</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 6 min • 10 jul 2025</p>
-            <p class="card-text">Pronto, los chilenos se familiarizarán con un nuevo ícono en sus celulares: el de un satélite, el que reemplazará por momentos al clásico ‘4G’, ‘LTE’ o ‘5G’ que vemos en nuestras pantallas. Y seremos los primeros en América Latina.
-
-              Chile se encuentra en pleno proceso de validación de una normativa que habilitará la oferta masiva de la conexión satelital en teléfonos inteligentes, una vez que los operadores lo implementen. Y hasta ahora, la única firma preparada es Entel, que logró una alianza con Starlink para ofrecerlo en sus planes.</p>
-            <a class="stretched-link" href="blog-post.html?id=4"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={lenovo} alt="Indies Switch"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">pc</span>
-              <span class="badge badge-tag">Noticias</span>
-            </div>
-            <h5 class="card-title">Lenovo ataca el sector Gaming en IFA 2025 con el lanzamiento de Legion Go 2, un PC Gamer portátil con controladores desacoplables</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 6 min • 20 jun 2025</p>
-            <p class="card-text">Este dispositivo, que vió la luz por primera vez en forma de prototipo en el CES de 2025, es la respuesta de Lenovo a la Switch 2, un equipo portátil pero con toda la potencia de un pc gaming para que no haya que realizar compromisos entre la potencia y la portabilidad. La nueva Legion Go 2 da continuidad al éxito de la primera generación manteniendo el ADN del modelo original pero incorporando mejoras clave en base a las aportaciones de los fans, como la inclusión de unos controladores desacoplables y mayores opciones de personalización.</p>
-            <a class="stretched-link" href="blog-post.html?id=5"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={fortnite} alt="Indies Switch"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">pc</span>
-              <span class="badge badge-tag">Noticias</span>
-            </div>
-            <h5 class="card-title">Pasa de nivel en Fortnite más rápido con estos mapas secretos</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 6 min • 20 jun 2025</p>
-            <p class="card-text">Estos son algunos de los mapas más efectivos para farmear experiencia en Fortnite:
-              0875-1712-8130 mapa de parkour: Este mapa de parkour es ideal para mejorar tus habilidades de salto y agilidad mientras
-            </p>
-            <a class="stretched-link" href="blog-post.html?id=5"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={duocuc} alt="Indies Switch"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">promo</span>
-              <span class="badge badge-tag">Noticias</span>
-            </div>
-            <h5 class="card-title">APROVECHA EL DESCUENTO SOLO POR SER ALUMNO DUOC</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 6 min • 20 jun 2025</p>
-            <p class="card-text">Aprovhecha el DESCUENTO en toda la tienda solo registrando tu correo duoc uc .</p>
-            <a class="stretched-link" href="blog-post.html?id=5"></a>
-          </div>
-        </article>
-      </div>
-
-      
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={pokemon} alt="Indies Switch"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">cartas</span>
-              <span class="badge badge-tag">Noticias</span>
-            </div>
-            <h5 class="card-title">tips para elegir tu primer mazo pokemon</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 6 min • 20 jun 2025</p>
-            <p class="card-text">Elegir tu primer mazo de Pokémon puede ser una tarea abrumadora, especialmente con tantas opciones disponibles. Aquí hay algunos consejos para ayudarte a tomar la mejor decisión:
-
-1. Conoce las reglas: Antes de elegir un mazo, asegúrate de entender las reglas básicas del juego. Esto te ayudará a identificar qué cartas son más útiles para tu estrategia.
-
-2. Elige un tipo de Pokémon: Los mazos suelen centrarse en un tipo específico de Pokémon (agua, fuego, planta, etc.). Elige un tipo que te guste y que tenga buenas sinergias entre las cartas.
-
-3. Considera la jugabilidad: Algunos mazos son más fáciles de jugar que otros. Si eres principiante, busca mazos que sean sencillos y que no requieran combinaciones complicadas de cartas.
-
-4. Prueba diferentes mazos: No tengas miedo de experimentar con diferentes mazos y estrategias. Esto te ayudará a encontrar el estilo de juego que más te guste.
-
-5. Aprende de la comunidad: Únete a grupos de jugadores de Pokémon y aprende de sus experiencias. Pueden ofrecerte valiosos consejos y recomendaciones sobre mazos.
-
-Recuerda que lo más importante es divertirte mientras juegas. ¡Buena suerte!</p>
-            <a class="stretched-link" href="blog-post.html?id=5"></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-12 col-sm-6 col-lg-4">
-        <article class="card h-100">
-          <img src={teclado} alt="Teclado mecánico"></img>
-          <div class="card-body d-flex flex-column">
-            <div class="mb-2 d-flex gap-2 flex-wrap">
-              <span class="badge badge-tag">Guías</span>
-              <span class="badge badge-tag">Hardware</span>
-            </div>
-            <h5 class="card-title">Cómo elegir tu primer teclado mecánico</h5>
-            <p class="card-text"><i class="bi bi-clock"></i> 9 min • 02 may 2025</p>
-            <p class="card-text">Cómo Elegir el Mejor Teclado Mecánico para tu Estilo de Juego
-Ahora que conoces las diferencias clave, aquí tienes algunos consejos para tomar la mejor decisión:
-
-Evalúa tu Estilo de Juego: Considera qué géneros juegas más y qué características necesitas. Un jugador de FPS podría preferir switches lineales y un diseño TKL, mientras que un jugador de MMO podría beneficiarse de switches táctiles y teclas programables.
-Considera tu Espacio: Si tienes un escritorio grande, un teclado full-size podría ser ideal. Si no, un TKL o compacto puede ser más conveniente.
-Prueba Antes de Comprar: Si es posible, prueba diferentes tipos de switches para sentir cuál es más cómodo para ti.
-Piensa en el Futuro: Considera la durabilidad y las opciones de personalización a largo plazo, como la facilidad de reemplazar keycaps o switches.</p>
-            <a class="stretched-link" href="blog-post.html?id=6"></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </main>
-    </nav>
-) }
+    </main>
+); }
