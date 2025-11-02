@@ -3,10 +3,17 @@ import { calcularSubtotal, calcularDescuento, calcularTotal } from "./cart.js";
 describe("Lógica del carrito", () => {
 
   it("calcularSubtotal suma precio * cantidad de todos los items", () => {
+    console.log("Ejecutando test de calcularSubtotal con items de prueba...");
+    console.log("Items de prueba: ", [
+      { price: 10000, qty: 2 },
+      { price: 5000, qty: 1 }
+    ]);
     const items = [
       { price: 10000, qty: 2 },
       { price: 5000, qty: 1 }
     ]; 
+    console.log("Subtotal calculado: ", calcularSubtotal(items));
+    console.log("Subtotal esperado: 25000");
     expect(calcularSubtotal(items)).toBe(25000);
   });
 

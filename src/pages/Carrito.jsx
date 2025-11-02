@@ -10,6 +10,7 @@ export default function Carrito(){
 
   const [esDuoc, setEsDuoc] = useState(true);
 
+  // useMemo para evitar cálculos innecesarios en cada render 
   const subtotal = useMemo(() => calcularSubtotal(items), [items]);
   const descuento = useMemo(() => calcularDescuento(subtotal, esDuoc), [subtotal, esDuoc]);
   const total = useMemo(() => calcularTotal(items, esDuoc), [items, esDuoc]);
